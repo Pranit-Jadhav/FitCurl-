@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wilks Calculator</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.wilks-form {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+select, input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.btn-animate {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-animate:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Wilks Calculator</h1>
+    
+    <div class="wilks-form">
+      <label for="gender">Gender:</label>
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="weight-unit">Weight Unit:</label>
+      <select id="weight-unit">
+        <option value="kg">Kilograms (kg)</option>
+        <option value="lbs">Pounds (lbs)</option>
+      </select>
+
+      <label for="bodyweight">Bodyweight (kg):</label>
+      <input type="number" id="bodyweight" placeholder="Enter bodyweight in kg">
+
+      <label for="weightlifted">Weight Lifted (kg):</label>
+      <input type="number" id="weightlifted" placeholder="Enter weight lifted in kg">
+
+      <button class="btn-animate" onclick="calculateWilks()">Calculate Wilks Score</button>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    function calculateWilks() {
+  const gender = document.getElementById("gender").value;
+  const unit = document.getElementById("weight-unit").value;
+  let bodyweight = parseFloat(document.getElementById("bodyweight").value);
+  let weightlifted = parseFloat(document.getElementById("weightlifted").value);
+
+  // Convert lbs to kg if the unit selected is lbs
+  if (unit === 'lbs') {
+    bodyweight = bodyweight * 0.453592;
+    weightlifted = weightlifted * 0.453592;
+  }
+
+  // Wilks coefficients for male and female
+  const maleCoefficients = [-216.0475144, 16.2606339, -0.002388645, -0.00113732, 7.01863e-6, -1.291e-8];
+  const femaleCoefficients = [594.31747775582, -27.23842536447, 0.82112226871, -0.00930733913, 0.00004731582, -0.00000009054];
+
+  let wilksCoeff;
+  if (gender === "male") {
+    wilksCoeff = calculateCoefficient(bodyweight, maleCoefficients);
+  } else {
+    wilksCoeff = calculateCoefficient(bodyweight, femaleCoefficients);
+  }
+
+  const wilksScore = (weightlifted * 500) / wilksCoeff;
+  document.getElementById("result").innerHTML = `Your Wilks Score is ${wilksScore.toFixed(2)}`;
+}
+
+function calculateCoefficient(bodyweight, coefficients) {
+  return coefficients[0]
+    + (coefficients[1] * bodyweight)
+    + (coefficients[2] * Math.pow(bodyweight, 2))
+    + (coefficients[3] * Math.pow(bodyweight, 3))
+    + (coefficients[4] * Math.pow(bodyweight, 4))
+    + (coefficients[5] * Math.pow(bodyweight, 5));
+}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkOuts</title>
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        }
+        body{
+            background-color: rgb(7, 7, 37);
+        }
+        .nav{
+            font-size: 3rem;
+        }
+        .nav-bar{
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+        }
+        p{
+            color: white;
+        }
+
+        #b1{
+            background-image: url(../images/abs.png);
+            background-size: contain;
+            background-position: center;
+        }
+        #b2,#a2,#i2{
+            background-image: url(../images/chest.jpeg);
+            background-size: contain;
+            background-position: center;
+        }
+        #b3,#a3,#i3{
+            background-image: url(../images/arms.jpeg);
+            background-size: contain;
+            background-position: center;
+        }
+        #b4,#a4,#i4{
+            background-image: url(../images/legs.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+        #b5,#a5,#i5{
+            background-image: url(../images/back.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+        .beg{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            height: 500px;
+            padding: 2rem;
+        }
+        .wo{
+            border: 3px solid rgb(235, 19, 19);
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+        .wo:hover{
+            transform: scale(1.03);
+            box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+            
+        }
+        .heading{
+            padding-left: 2rem;
+            padding-top: 1rem;
+            color: whitesmoke;
+        }
+        .wo > h3{
+            color: white;
+            font-size: 1.5rem;
+            
+        }
+        .int{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            height: 500px;
+            padding: 2rem;
+        }
+        .adv{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            height: 500px;
+            padding: 2rem;
+        }
+        @media(max-width: 600px) {
+            .beg{
+                display: flex;
+                flex-direction: column; 
+                height: 1000px;
+            }
+            .int{
+                display: flex;
+                flex-direction: column; 
+                height: 1000px;
+            }
+            .adv{
+                display: flex;
+                flex-direction: column; 
+                height: 1000px;
+            }
+            .wo{
+                height: 300px;
+            }
+        }
+            
+
+
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="name">
+            <h1 class="nav">WorkOut Library</h1>
+        </div>
+    </div>
+
+    <div class="heading"><h1>BEGINNER</h1></div>
+
+    <div class="beg">
+        <div class="wo" id="b1" onclick="location.href='/abs'">
+            <h3>ABS BEGINNER</h3>
+            <p>20 MINS</p>
+            <p>16 EXERCISES</p>
+        </div>
+        <div class="wo" id="b2" >
+            <h3>CHEST BEGINNER</h3>
+            <p>7 MINS</p>
+            <p>11 EXERCISES</p>
+        </div>
+        <div class="wo" id="b3">
+            <h3>ARM BEGINNER</h3>
+            <p>17 MINS</p>
+            <p>19 EXERCISES</p>
+        </div>
+        <div class="wo" id="b4">
+            <h3>LEG BEGINNER</h3>
+            <p>26 MINS</p>
+            <p>19 EXERCISES</p>
+        </div>
+        <div class="wo" id="b5">
+            <h3>SHOULDER & BACK BEGINNER</h3>
+            <p>17 MINS</p>
+            <p>17 EXERCISES</p>
+        </div>
+    </div>
+    <hr>
+    <div class="heading"><h1>INTERMEDIATE</h1></div>
+
+    <div class="int">
+        <div class="wo" id="i1" onclick="location.href='https://www.google.com'">
+            <h3>ABS INTERMEDIATE</h3>
+            <p>29 MINS</p>
+            <p>21 EXERCISES</p>
+        </div>
+        <div class="wo" id="i2" >
+            <h3>CHEST INTERMEDIATE</h3>
+            <p>15 MINS</p>
+            <p>14 EXERCISES</p>
+        </div>
+        <div class="wo" id="i3">
+            <h3>ARM INTERMEDIATE</h3>
+            <p>26 MINS</p>
+            <p>25 EXERCISES</p>
+        </div>
+        <div class="wo" id="i4">
+            <h3>LEG INTERMEDIATE</h3>
+            <p>41 MINS</p>
+            <p>36 EXERCISES</p>
+        </div>
+        <div class="wo" id="i5">
+            <h3>SHOULDER & BACK INTERMEDIATE</h3>
+            <p>19 MINS</p>
+            <p>17 EXERCISES</p>
+        </div>
+    </div>
+    <hr>
+    <div class="heading"><h1>ADVANCED</h1></div>
+
+    <div class="adv">
+        <div class="wo" id="a1" onclick="location.href='https://www.google.com'">
+            <h3>ABS ADVANCED</h3>
+            <p>36 MINS</p>
+            <p>21 EXERCISES</p>
+        </div>
+        <div class="wo" id="a2" >
+            <h3>CHEST ADVANCED</h3>
+            <p>19 MINS</p>
+            <p>16 EXERCISES</p>
+        </div>
+        <div class="wo" id="a3">
+            <h3>ARM ADVANCED</h3>
+            <p>32 MINS</p>
+            <p>28 EXERCISES</p>
+        </div>
+        <div class="wo" id="a4">
+            <h3>LEG ADVANCED</h3>
+            <p>53 MINS</p>
+            <p>43 EXERCISES</p>
+        </div>
+        <div class="wo" id="a5">
+            <h3>SHOULDER & BACK ADVANCED</h3>
+            <p>19 MINS</p>
+            <p>17 EXERCISES</p>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+    </script>
+    
+</body>
+</html>

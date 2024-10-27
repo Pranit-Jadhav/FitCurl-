@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Competition Alerts</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('fitness-background.jpg');
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #28a745;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .events {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .event {
+            background-color: #ffffff8f;
+            border-radius: 5px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .event h2 {
+            color: #333;
+        }
+
+        .event p {
+            color: #555;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .events {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .event {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Upcoming Fitness Competitions</h1>
+    </header>
+
+    <section class="events">
+        <!-- Event 1 -->
+        <div class="event">
+            <h2>Muscle Mania Championship</h2>
+            <p><strong>Date:</strong> 10th November 2024</p>
+            <p><strong>Location:</strong> Mumbai Fitness Arena, Mumbai</p>
+            <p>Showcase your strength and fitness in this highly anticipated muscle-building competition. Open for all levels of athletes!</p>
+            <button onclick="rsvp()">RSVP</button>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event">
+            <h2>Delhi Fitathon</h2>
+            <p><strong>Date:</strong> 20th November 2024</p>
+            <p><strong>Location:</strong> National Stadium, New Delhi</p>
+            <p>A fitness marathon featuring multiple categories, including CrossFit, running, and endurance challenges. Come test your limits!</p>
+            <button onclick="rsvp()">RSVP</button>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event">
+            <h2>Bangalore Body Sculpt Competition</h2>
+            <p><strong>Date:</strong> 28th November 2024</p>
+            <p><strong>Location:</strong> Bangalore Sports Complex, Bangalore</p>
+            <p>Get ready to showcase your physique at this prestigious body sculpting competition. Open to amateur and pro bodybuilders.</p>
+            <button onclick="rsvp()">RSVP</button>
+        </div>
+
+        <!-- Event 4 -->
+        <div class="event">
+            <h2>Hyderabad Powerlifting Challenge</h2>
+            <p><strong>Date:</strong> 5th December 2024</p>
+            <p><strong>Location:</strong> HITEX Convention Centre, Hyderabad</p>
+            <p>Participate in the ultimate test of strength at Hyderabad’s most competitive powerlifting challenge. Open for male and female categories.</p>
+            <button onclick="rsvp()">RSVP</button>
+        </div>
+
+        <!-- Event 5 -->
+        <div class="event">
+            <h2>Pune CrossFit Championship</h2>
+            <p><strong>Date:</strong> 12th December 2024</p>
+            <p><strong>Location:</strong> CrossFit Pune Gym, Pune</p>
+            <p>Test your endurance and versatility with challenging CrossFit workouts. Both individual and team categories are available.</p>
+            <button onclick="rsvp()">RSVP</button>
+        </div>
+
+        <!-- Event 6 -->
+        <div class="event">
+            <h2>Chennai Endurance Triathlon</h2>
+            <p><strong>Date:</strong> 18th December 2024</p>
+            <p><strong>Location:</strong> Marina Beach, Chennai</p>
+            <p>A multi-sport competition with swimming, cycling, and running all packed into one event. Suitable for endurance athletes of all levels.</p>
+            <button onclick="rsvp()">RSVP</button>
+        </div>
+    </section>
+
+    <script>
+        function rsvp() {
+            alert('Thank you for your RSVP to the Fitness Competition!');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+#exercise-container {
+  margin-top: 20px;
+}
+
+#exercise-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#exercise-instructions {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+#exercise-image {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#timer {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #ff6b6b;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #ff4c4c;
+}
+
+/* Exercise list styles */
+#exercise-list {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 400px;
+  margin: 0 auto;
+}
+
+#exercise-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#exercise-list ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#exercise-list ul li:last-child {
+  border-bottom: none;
+}
+
+#exercise-list div {
+  font-size: 18px;
+  color: #333;
+}
+
+#exercise-list img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#flex{
+    display: flex;
+    gap: 16rem;
+    height: 600px;
+    /* border: 3px solid white; */
+    border-radius: 10px;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+   
+
+}
+#left{
+  margin-top: 50px;
+  width: 200px;
+  height: 500px;
+  margin-left: 1.5rem;
+  
+
+
+}
+#left-exer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-direction: column;
+}
+#only-list{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-decoration: none;
+ 
+}
+
+ul {
+  list-style-type: none;
+}
+
+.all{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.real-left{
+  
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-right: 2px solid #eee;
+    height: auto;
+    border-radius: 10px;
+}

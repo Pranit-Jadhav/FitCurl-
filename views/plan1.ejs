@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>DashBoard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/plan.css">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> <img src="../images/logo-new.jpeg" alt="website_icon" height="50" > FitCurl</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">DashBoard</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/workout" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+              WorkOuts
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/workout">Beginner</a></li>
+              <li><a class="dropdown-item" href="/workout">Intermediate</a></li>
+              <li><a class="dropdown-item" href="/workout">Advance</a></li>
+              <!-- <li><hr class="dropdown-divider"></li><li>
+              <li><a class="dropdown-item" href="#">Advance</a/li> -->
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bmi">BMI Calculator</a>
+          </li>
+          <li class="nav-item"></li>
+            <a class="nav-link " aria-current="page" href="/wilks">Wilks Calculator</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" action="/login" method="post">
+         <button class="btn btn-outline-success" type="submit">Log Out</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+      <div class="container">
+        <h3>DashBoard</h3>
+      </div>
+      <main>
+        <div class="dashboard">
+            <div class="panel" id="avg-calories">
+                <h2>Average Calories Burned</h2>
+                <div class="circular-progress" id="avg-calories-progress">
+                    <span id="avg-calories-text">500 cal/week</span>
+                </div>
+                <canvas id="avg-calories-chart"></canvas>
+            </div>
+            <div class="panel" id="workouts">
+                <h2>Total Workouts</h2>
+                <div id="workouts-chart"></div>
+                <ul id="workouts-list">
+                    <li>Strength Training - 30 min - 300 cal</li>
+                    <li>Cardio - 45 min - 400 cal</li>
+                </ul>
+                <button id="add-workout">Add Workout</button>
+            </div>
+            <div class="panel" id="total-calories">
+                <h2>Total Calories Burned</h2>
+                <div id="total-calories-counter">15,000 cal</div>
+                <canvas id="total-calories-chart"></canvas>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    // Simulated data
+    const avgCalories = 500;
+    const totalCalories = 15000;
+    const workouts = [
+        { type: 'Strength Training', duration: 30, calories: 300 },
+        { type: 'Cardio', duration: 45, calories: 400 },
+    ];
+
+    // Update average calories text
+    document.getElementById('avg-calories-text').innerText = `${avgCalories} cal/week`;
+    
+    // Total calories counter
+    document.getElementById('total-calories-counter').innerText = `${totalCalories} cal`;
+    
+    // Generate workouts list
+    const workoutsList = document.getElementById('workouts-list');
+    workouts.forEach(workout => {
+        const li = document.createElement('li');
+        li.innerText = `${workout.type} - ${workout.duration} min - ${workout.calories} cal`;
+        workoutsList.appendChild(li);
+    });
+
+    // Chart setup
+    const ctx = document.getElementById('avg-calories-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{
+                label: 'Average Calories Burned',
+                data: [400, 500, 600, 550],
+                borderColor: '#4caf50',
+                fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

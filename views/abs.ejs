@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Timer</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+
+</head>
+<body>
+    <div class="all">
+
+   <div id="flex">
+        
+         <div class="real-left">
+        <div id="left">
+          <div id="left-exer">
+            <h3>Exercise List</h3>
+            <ul id="only-list">
+              <li>
+               1. Jumping Jacks
+              </li>
+              <li>
+                <div>2. Air Squats</div>
+              </li>
+              <li>
+                
+                <div>3. Alternate Heel Touches</div>
+              </li>
+              <li>
+                
+                <div>4. Jump Squats</div>
+              </li>
+              <li>
+                
+                <div>5. Plank</div>
+              </li>
+              <li>
+                
+                <div>6. Burpees</div>
+              </li>
+              <li>
+                
+                <div>7. Mountain Climbers</div>
+              </li>
+              <li>
+                
+                <div>8. Leg Raises</div>
+              </li>
+              <li>
+                
+                <div>9. Sit Ups</div>
+              </li>
+              <li>
+                
+                <div>10. Pelvic Tilts</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+
+
+        <div class="right">
+
+  <div id="exercise-container">
+    <h2 id="exercise-title">Exercise 1: Jumping Jacks</h2>
+    <p id="exercise-instructions">Instructions: Do as many as possible in 30 seconds!</p>
+    <img id="exercise-image" src="../images/abs/anim-jump-squats.gif" alt="Exercise Image" width="300">
+  </div>
+
+  <div id="timer">0:30</div>
+  <button id="start-timer">Start</button>
+  <button id="pause-resume-button">Pause</button>
+
+  <ul id="exercise-list-ul" style="display:none;">
+    <li>
+      <div>1</div>
+      <div>Jumping Jacks</div>
+      <img id="exercise-image" src="../images/abs/anim-jump-squats.gif" alt="Jumping Jacks">
+    </li>
+    <li>
+      <div>2</div>
+      <div>Air Squats</div>
+      <img id="exercise-image" src="../images/abs/anim-air-squat.gif" alt="Push-ups">
+    </li>
+    <li>
+      <div>3</div>
+      <div>Alternate Heel Touches</div>
+      <img id="exercise-image" src="../images/abs/anim-alternate-heel-touches.gif" alt="Squats">
+    </li>
+    <!-- Add more exercises as needed -->
+    <li>
+        <div>4</div>
+        <div>Jump Squats</div>
+        <img id="exercise-image" src="../images/abs/anim-jump-squats.gif">
+     </li>
+     
+     <li>
+        <div>5</div>
+        <div>Plank</div>
+        <img id="exercise-image" src="../images/abs/anim-plank-arm-lifts.gif">
+     </li>
+     <li>
+        <div>6</div>
+        <div>Burpees</div>
+        <img id="exercise-image" src="../images/abs/anim-burpees.gif">
+     </li>
+     <li>
+        <div>7</div>
+        <div>Mountain Climbers</div>
+        <img id="exercise-image" src="../images/abs/anim-mountain-climbers.gif">
+     </li>
+     <li>
+        <div>8</div>
+        <div>Leg Raises</div>
+        <img id="exercise-image" src="../images/abs/anim-leg-raise.gif">
+     </li>
+     <li>
+        <div>9</div>
+        <div>Sit Ups</div>
+        <img id="exercise-image" src="../images/abs/anim-sit-ups.gif">
+     </li>
+     <li>
+        <div>10</div>
+        <div>Pelvic Tilts</div>
+        <img id="exercise-image" src="../images/abs/anim-pelvic-tilt.gif">
+     </li>
+     
+     
+  </ul>
+</div>
+
+</div>
+</div>
+ 
+  <script>
+    let timerInterval;
+    let timerSeconds = 30; 
+    let restSeconds = 15; 
+    let currentExercise = 1; 
+    let totalExercises = 10; 
+    let exerciseList = document.getElementById("exercise-list-ul").children;
+    let isResting = false; 
+    let isPaused = false;
+    const restImageSrc = '../images/OIP.jpeg'; 
+
+
+
+    function startTimer() {
+      if (timerInterval) return; 
+
+      timerInterval = setInterval(() => {
+        if (isResting) {
+          restSeconds--;
+          document.getElementById("timer").innerHTML = `Rest: ${formatTime(restSeconds)}`;
+          if (restSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            isResting = false;
+            nextExercise(); 
+          }
+        } else {
+          timerSeconds--;
+          document.getElementById("timer").innerHTML = formatTime(timerSeconds);
+          if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            isResting = true;
+            restSeconds = 15; 
+            startRest(); 
+          }
+        }
+      }, 1000); 
+    }
+
+    
+    function startRest() {
+      document.getElementById("exercise-title").innerHTML = "Rest";
+      document.getElementById("exercise-instructions").innerHTML = "Take a 15-second rest";
+      document.getElementById("exercise-image").src = restImageSrc;
+      startTimer();
+    }
+
+    
+    function formatTime(seconds) {
+      let minutes = Math.floor(seconds / 60);
+      let remainingSeconds = seconds % 60;
+      return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+    }
+
+    
+    function nextExercise() {
+      currentExercise++;
+      if (currentExercise <= totalExercises) {
+       
+        timerSeconds = 30;
+
+        
+        const exercise = exerciseList[currentExercise - 1].children[1].innerHTML;
+        const exerciseImageSrc = exerciseList[currentExercise - 1].children[2].src;
+
+        document.getElementById("exercise-title").innerHTML = `Exercise ${currentExercise}: ${exercise}`;
+        document.getElementById("exercise-instructions").innerHTML = `Instructions: ...`;
+        document.getElementById("exercise-image").src = exerciseImageSrc;
+
+        
+        startTimer();
+      } else {
+        
+        document.getElementById("exercise-title").innerHTML = "Congratulations! You've completed all exercises!";
+        document.getElementById("exercise-instructions").innerHTML = "";
+        document.getElementById("exercise-image").src = "";
+      }
+    }
+
+    
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null; 
+      isPaused = true;
+      document.getElementById("pause-resume-button").innerHTML = "Resume";
+    }
+
+    
+    function resumeTimer() {
+      if (isResting) {
+        startRest();
+      } else {
+        startTimer();
+      }
+      isPaused = false;
+      document.getElementById("pause-resume-button").innerHTML = "Pause";
+    }
+
+    document.getElementById("start-timer").addEventListener("click", startTimer);
+
+    
+    document.getElementById("pause-resume-button").addEventListener("click", () => {
+      if (isPaused) {
+        resumeTimer();
+      } else {
+        pauseTimer();
+      }
+    });
+  </script>
+
+</body>
+</html>

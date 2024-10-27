@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.bmi-form {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.btn-animate {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-animate:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BMI Calculator</h1>
+    <div class="bmi-form">
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" placeholder="Enter height in cm">
+
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" placeholder="Enter weight in kg">
+
+      <button class="btn-animate" onclick="calculateBMI()">Calculate BMI</button>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+  let height = parseFloat(document.getElementById("height").value);
+  let weight = parseFloat(document.getElementById("weight").value);
+
+  if (height > 0 && weight > 0) {
+    let bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+    let category = "";
+
+    if (bmi < 18.5) {
+      category = "Underweight";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+      category = "Normal weight";
+    } else if (bmi >= 25 && bmi < 29.9) {
+      category = "Overweight";
+    } else {
+      category = "Obesity";
+    }
+
+    document.getElementById("result").innerHTML = `Your BMI is ${bmi} (${category})`;
+  } else {
+    document.getElementById("result").innerHTML = "Please enter valid values.";
+  }
+}
+
+  </script>
+</body>
+</html>
